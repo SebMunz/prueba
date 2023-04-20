@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio Grupal 5</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.2/datatables.min.css"/>
+</head>
+<body>
+
+<table id="miTabla">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Ciudad</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.2/datatables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $.get('datos.txt', function(data) {
+      var filas = data.split('\n');
+      var tabla = $('#miTabla').DataTable();
+      for (var i = 0; i < filas.length; i++) {
+        var columnas = filas[i].split(',');
+        tabla.row.add(columnas).draw();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
